@@ -32,13 +32,18 @@ class StaticArray():
         self._container[index] = None
 
     def __repr__(self):
-        return f"StaticArray({[x for x in self._container if x is not None]})"
+        return f"{self.__class__.__name__}({self._container})"
 
     def __iter__(self):
         return iter(self._container)
 
     def __len__(self):
         return sum(1 for x in self._container if x is not None)
+
+    def get_index(self, value):
+        for item in self._container:
+            if item is not None and item == value:
+                return item
 
     def __check_index(self, index):
         is_integer = isinstance(index, int)
@@ -48,11 +53,6 @@ class StaticArray():
         # Check if the index is integer  value matches the expected type for elements in the array.
         if not is_integer or is_less_then_zero or is_grater_equal_to_capacity:
             raise IndexError("Index out of range")
-
-    def get_index(self, value):
-        for item in self._container:
-            if item is not None and item == value:
-                return item
 
 
 if __name__ == '__main__':
@@ -64,6 +64,6 @@ if __name__ == '__main__':
     array[2] = "C"
     array[3] = "D"
     array[4] = "E"
-
+    print(array)
     for i in array:
         print(i)
