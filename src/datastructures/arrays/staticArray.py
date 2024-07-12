@@ -45,6 +45,15 @@ class StaticArray():
             if item is not None and item == value:
                 return index
 
+    def reverse(self):
+        pass  # TODO: Let me think about how I should implement this given the fact that we have none items.
+
+    def sort(self):
+        pass  # TODO: Once I implement this feature in the future, I pass it to this function
+
+    def binary_search(self):
+        pass  # TODO: Once I implement this feature in the future, I pass it to this function
+
     def __check_index(self, index):
         is_integer = isinstance(index, int)
         is_less_then_zero = index < 0
