@@ -41,9 +41,9 @@ class StaticArray():
         return sum(1 for x in self._container if x is not None)
 
     def get_index(self, value):
-        for item in self._container:
+        for index, item in enumerate(self._container):
             if item is not None and item == value:
-                return item
+                return index
 
     def __check_index(self, index):
         is_integer = isinstance(index, int)
@@ -64,6 +64,6 @@ if __name__ == '__main__':
     array[2] = "C"
     array[3] = "D"
     array[4] = "E"
-    print(array)
+
     for i in array:
         print(i)
