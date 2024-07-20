@@ -1,4 +1,4 @@
-from src.datastructures.arrays.staticArray import StaticArray
+from src.datastructures.arrays.static_array import StaticArray
 
 
 class DynamicArray(StaticArray):
