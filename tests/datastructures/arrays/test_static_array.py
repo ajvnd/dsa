@@ -19,6 +19,24 @@ class TestStaticArray:
         assert static_array._capacity == 5
         assert static_array.__dict__['_StaticArray__item_type'] == int
 
+    def test_raise_exception_if_capacity_less_than_zero(self, static_array):
+        # arrange
+        type = None
+        capacity = -1
+
+        # act and assert
+        with pytest.raises(ValueError):
+            StaticArray(type, capacity)
+
+    def test_raise_exception_if_item_type_is_not_primitive(self, static_array):
+        # arrange
+        type = None
+        capacity = 5
+
+        # act and assert
+        with pytest.raises(TypeError):
+            StaticArray(type, capacity)
+
     def test_can_set_items_correctly(self, static_array):
         # arrange
         new_item = 5
