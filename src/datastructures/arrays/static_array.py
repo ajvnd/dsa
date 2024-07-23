@@ -10,7 +10,7 @@ class StaticArray():
 
         # make sure the data type of items is a primitive data type
         if item_type not in [int, float, str, bool]:
-            raise ValueError("Item type must be a primitive data type")
+            raise TypeError("Item type must be a primitive data type")
 
         self.__item_type = item_type
 
