@@ -3,6 +3,8 @@ Algorithms and data structures are fundamental to efficient code and good softwa
 
 
 # Data Structures
-- Arrays
+- Array
   - [Static Array](src/datastructures/arrays/static_array.py)
   - [Dynamic Array](src/datastructures/arrays/dynamic_array.py)
+- LinkedList
+  - [Singly Linked List](src/datastructures/linkedlist/singly_linkedlist.py)
