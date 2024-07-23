@@ -20,7 +20,7 @@ class TestStaticArray:
         assert static_array.__dict__['_StaticArray__item_type'] == int
 
     def test_can_set_items_correctly(self, static_array):
-        # assert 
+        # arrange
         new_item = 5
 
         # act
@@ -28,3 +28,24 @@ class TestStaticArray:
 
         # assert
         assert static_array[0] == new_item
+
+    def test_can_get_items_correctly(self, static_array):
+        # arrange
+        new_item = 5
+
+        # act
+        static_array[0] = new_item
+
+        # assert
+        assert static_array[0] == new_item
+
+    def test_can_delete_items_correctly(self, static_array):
+        # arrange
+        new_item = 5
+        static_array[0] = new_item
+
+        # act
+        del static_array[0]
+
+        # assert
+        assert static_array[0] == None
