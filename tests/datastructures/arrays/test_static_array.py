@@ -47,6 +47,14 @@ class TestStaticArray:
         # assert
         assert static_array[0] == new_item
 
+    def test_raise_exception_if_an_inconsistent_type_is_set(self, static_array):
+        # arrange
+        new_item = 'five'
+
+        # act and assert
+        with pytest.raises(TypeError):
+            static_array[0] = new_item
+
     def test_can_get_items_correctly(self, static_array):
         # arrange
         new_item = 5
@@ -67,3 +75,24 @@ class TestStaticArray:
 
         # assert
         assert static_array[0] == None
+
+    def test_can_represent_items_correctly(self, static_array):
+        # arrange
+
+        # act
+        items = str(static_array)
+
+        # assert
+        assert isinstance(items, str)
+        assert items == str(static_array)
+
+    def test_can_return_correct_length(self, static_array):
+        # arrange
+        new_item = 5
+
+        # act
+        static_array[0] = new_item
+
+        # assert
+        assert len(static_array) == 1
+
