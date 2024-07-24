@@ -46,7 +46,14 @@ class StaticArray():
                 return index
 
     def reverse(self):
-        pass  # TODO: Let me think about how I should implement this given the fact that we have none items.
+        # filter out none items
+        items = [i for i in self._container if i is not None]
+        # reverse remains
+        items = items[::-1]
+        # calculate number of none items required to be attached to new reversed list
+        remains = self._capacity - len(items)
+        # make the reverse array with proper number of none items
+        self._container = items + [None] * remains
 
     def sort(self):
         pass  # TODO: Once I implement this feature in the future, I pass it to this function
@@ -71,8 +78,6 @@ if __name__ == '__main__':
     array[0] = "A"
     array[1] = "B"
     array[2] = "C"
-    array[3] = "D"
-    array[4] = "E"
 
-    for i in array:
-        print(i)
+    array.reverse()
+    print(array)
