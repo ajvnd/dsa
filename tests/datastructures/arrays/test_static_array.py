@@ -96,3 +96,17 @@ class TestStaticArray:
         # assert
         assert len(static_array) == 1
 
+    def test_can_iterate_on_items_correctly(self, static_array):
+        # act and assert
+        for item in static_array:
+            assert item is None
+
+    def test_can_get_index_of_items_correctly(self, static_array):
+        # arrange
+        static_array[0] = 5
+
+        # act
+        index = static_array.get_index(5)
+
+        # assert
+        assert index == 0
