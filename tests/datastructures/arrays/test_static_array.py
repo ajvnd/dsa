@@ -110,3 +110,20 @@ class TestStaticArray:
 
         # assert
         assert index == 0
+
+    def test_can_reverse_items_correctly(self, static_array):
+        # arrange
+        static_array[0] = 5
+        static_array[1] = 6
+        static_array[2] = 7
+        static_array[3] = 8
+
+        # act
+        static_array.reverse()
+
+        # assert
+        assert static_array[0] == 8
+        assert static_array[1] == 7
+        assert static_array[2] == 6
+        assert static_array[3] == 5
+        assert static_array[4] == None
