@@ -53,7 +53,7 @@ class StaticArray():
         # calculate number of none items required to be attached to new reversed list
         remains = self._capacity - len(items)
         # make the reverse array with proper number of none items
-        self._container = items + [None] * remains
+        self._container = items + ([None] * remains)
 
     def sort(self):
         pass  # TODO: Once I implement this feature in the future, I pass it to this function
