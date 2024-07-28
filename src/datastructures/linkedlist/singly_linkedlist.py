@@ -45,3 +45,7 @@ class SinglyLinkedList(LinkedList):
     def remove_at(self, index):
         if self.is_empty():
             raise EmptyLinkedListException()
+
+        previous_to_item = self._getitem(index - 1)
+        next_to_item = self._getitem(index + 1)
+        previous_to_item.next = next_to_item
