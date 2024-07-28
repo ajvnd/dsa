@@ -37,6 +37,14 @@ class TestStaticArray:
         with pytest.raises(TypeError):
             StaticArray(type, capacity)
 
+    def test_raise_exception_if_tried_to_access_invalid_index(self, static_array):
+        # arrange
+        new_item = 5
+
+        # act & assert
+        with pytest.raises(IndexError):
+            static_array[6] = new_item
+
     def test_can_set_items_correctly(self, static_array):
         # arrange
         new_item = 5
@@ -127,3 +135,11 @@ class TestStaticArray:
         assert static_array[2] == 6
         assert static_array[3] == 5
         assert static_array[4] == None
+
+    @pytest.mark.xfail(reason="This functionality has not implemented")
+    def test_can_sort_items_correctly(self, static_array):
+        raise NotImplemented("This functionality has not implemented")
+
+    @pytest.mark.xfail(reason="This functionality has not implemented")
+    def test_can_perform_binary_search_correctly(self, static_array):
+        raise NotImplemented("This functionality has not implemented")
