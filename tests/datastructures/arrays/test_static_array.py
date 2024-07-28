@@ -45,15 +45,16 @@ class TestStaticArray:
         with pytest.raises(IndexError):
             static_array[6] = new_item
 
-    def test_can_set_items_correctly(self, static_array):
+    @pytest.mark.parametrize("index", [(0), (1), (2), (3), (4)])
+    def test_can_set_items_correctly(self, index, static_array):
         # arrange
         new_item = 5
 
         # act
-        static_array[0] = new_item
+        static_array[index] = new_item
 
         # assert
-        assert static_array[0] == new_item
+        assert static_array[index] == new_item
 
     def test_raise_exception_if_an_inconsistent_type_is_set(self, static_array):
         # arrange
@@ -82,7 +83,7 @@ class TestStaticArray:
         del static_array[0]
 
         # assert
-        assert static_array[0] == None
+        assert static_array[0] is None
 
     def test_can_represent_items_correctly(self, static_array):
         # arrange
@@ -134,7 +135,7 @@ class TestStaticArray:
         assert static_array[1] == 7
         assert static_array[2] == 6
         assert static_array[3] == 5
-        assert static_array[4] == None
+        assert static_array[4] is None
 
     @pytest.mark.xfail(reason="This functionality has not implemented")
     def test_can_sort_items_correctly(self, static_array):
