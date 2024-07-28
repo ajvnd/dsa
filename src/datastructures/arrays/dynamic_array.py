@@ -1,31 +1,42 @@
 from src.datastructures.arrays.static_array import StaticArray
 
 
+# The below code inherits many of its functionality from static_array
+
+
 class DynamicArray(StaticArray):
     def __init__(self, item_type):
         super().__init__(item_type, 2)
 
     def append(self, item):
-        is_array_reached_capacity = super().__len__() + 1 >= self._capacity
-
         # if the number of items reached capacity, then double the size of array
-        if is_array_reached_capacity:
-            self._capacity *= 2
-            self._container += ([None] * (self._capacity - super().__len__() - 1))
+        if self.__is_reached_the_capacity():
+            self.__double_capacity()
 
         super().__setitem__(super().__len__(), item)
 
     def insert(self, index, item):
+        # if the number of items reached capacity, then double the size of array
+        if self.__is_reached_the_capacity():
+            self.__double_capacity()
 
-        # TODO: I am still thinking of finding the an element and efficient way.
-        for i in range(index, self._capacity):
+        # shifting items to the right from last item to current item in index
+        for i in range(self.__len__(), index, -1):
             self._container[i + 1] = self._container[i]
 
+        # set new value after shifting items
         super().__setitem__(index, item)
 
     def remove(self, item):
         index = super().get_index(item)
         self.__delitem__(index)
+
+    def __is_reached_the_capacity(self):
+        return super().__len__() + 1 == self._capacity
+
+    def __double_capacity(self):
+        self._capacity *= 2
+        self._container += ([None] * (self._capacity - super().__len__() - 1))
 
     def __delitem__(self, index):
         super().__delitem__(index)
@@ -45,9 +56,8 @@ class DynamicArray(StaticArray):
 
 if __name__ == '__main__':
     da = DynamicArray(int)
-    da.append(1)
-    da.append(2)
     da.append(3)
     da.append(4)
-    da.remove(4)
+    da.append(4)
+    da.insert(1, 0)
     print(da)
