@@ -31,11 +31,12 @@ class SinglyLinkedList(LinkedList):
 
     def add_at(self, index, value):
         new_node = SinglyLinkedListNode(value)
+
         if self.is_empty():
             self._initialize_linkedlist(new_node)
-        elif index == 0:
+        elif self.__is_first_item(index):
             self.add_first(value)
-        elif index == self.__len__() - 1:
+        elif self.__is_last_item(index):
             self.add_last(value)
         else:
             previous_to_item = self._getitem(index - 1)
@@ -59,11 +60,17 @@ class SinglyLinkedList(LinkedList):
         if self.is_empty():
             raise EmptyLinkedListException()
 
-        if index == 0:
+        if self.__is_first_item(index):
             self.remove_first()
-        elif index == self.__len__() - 1:
+        elif self.__is_last_item(index):
             self.remove_last()
         else:
             previous_to_item = self._getitem(index - 1)
             next_to_item = self._getitem(index + 1)
             previous_to_item.next = next_to_item
+
+    def __is_first_item(self, index):
+        return index == 0
+
+    def __is_last_item(self, index):
+        return index == self.__len__() - 1
