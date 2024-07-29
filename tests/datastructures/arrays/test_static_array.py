@@ -76,8 +76,7 @@ class TestStaticArray:
 
     def test_can_delete_items_correctly(self, static_array):
         # arrange
-        new_item = 5
-        static_array[0] = new_item
+        static_array[0] = 5
 
         # act
         del static_array[0]
