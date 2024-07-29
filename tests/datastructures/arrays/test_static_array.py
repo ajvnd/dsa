@@ -86,13 +86,14 @@ class TestStaticArray:
 
     def test_can_represent_items_correctly(self, static_array):
         # arrange
-
+        static_array[0] = 5
+        static_array[1] = 6
         # act
         items = str(static_array)
 
         # assert
         assert isinstance(items, str)
-        assert items == str(static_array)
+        assert "StaticArray([5, 6, None, None, None])" == str(static_array)
 
     def test_can_return_correct_length(self, static_array):
         # arrange
