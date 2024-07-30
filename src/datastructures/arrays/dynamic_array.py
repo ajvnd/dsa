@@ -6,7 +6,7 @@ from src.datastructures.arrays.static_array import StaticArray
 
 class DynamicArray(StaticArray):
     def __init__(self, item_type):
-        super().__init__(item_type, 2)
+        super().__init__(item_type, 1)
 
     def append(self, item):
         # if the number of items reached capacity, then double the size of array
@@ -32,11 +32,11 @@ class DynamicArray(StaticArray):
         self.__delitem__(index)
 
     def __is_reached_the_capacity(self):
-        return super().__len__() + 1 == self._capacity
+        return super().__len__() == self._capacity
 
     def __double_capacity(self):
         self._capacity *= 2
-        self._container += ([None] * (self._capacity - super().__len__() - 1))
+        self._container += ([None] * (self._capacity - super().__len__()))
 
     def __delitem__(self, index):
         super().__delitem__(index)
@@ -59,5 +59,4 @@ if __name__ == '__main__':
     da.append(3)
     da.append(4)
     da.append(4)
-    da.insert(1, 0)
     print(da)
