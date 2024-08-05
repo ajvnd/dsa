@@ -9,7 +9,7 @@ class TestStaticArray:
     def static_array(self):
         return StaticArray(int, 5)
 
-    def test_can_initialize_fields_correctly(self, static_array):
+    def test_init_can_initialize_fields(self, static_array):
         # arrange
 
         # act
@@ -19,7 +19,7 @@ class TestStaticArray:
         assert static_array._capacity == 5
         assert static_array.__dict__['_StaticArray__item_type'] == int
 
-    def test_raise_exception_if_capacity_less_than_zero(self, static_array):
+    def test_init_raises_exception_for_negative_capacity(self, static_array):
         # arrange
         type = None
         capacity = -1
@@ -28,7 +28,7 @@ class TestStaticArray:
         with pytest.raises(ValueError):
             StaticArray(type, capacity)
 
-    def test_raise_exception_if_item_type_is_not_primitive(self, static_array):
+    def test_init_raises_exception_for_non_primitive_type(self, static_array):
         # arrange
         type = None
         capacity = 5
@@ -37,26 +37,7 @@ class TestStaticArray:
         with pytest.raises(TypeError):
             StaticArray(type, capacity)
 
-    def test_raise_exception_if_tried_to_access_invalid_index(self, static_array):
-        # arrange
-        new_item = 5
-
-        # act & assert
-        with pytest.raises(IndexError):
-            static_array[6] = new_item
-
-    @pytest.mark.parametrize("index", [(0), (1), (2), (3), (4)])
-    def test_can_set_items_correctly(self, index, static_array):
-        # arrange
-        new_item = 5
-
-        # act
-        static_array[index] = new_item
-
-        # assert
-        assert static_array[index] == new_item
-
-    def test_raise_exception_if_an_inconsistent_type_is_set(self, static_array):
+    def test_init_raises_exception_for_inconsistent_type(self, static_array):
         # arrange
         new_item = 'five'
 
@@ -64,7 +45,7 @@ class TestStaticArray:
         with pytest.raises(TypeError):
             static_array[0] = new_item
 
-    def test_can_get_items_correctly(self, static_array):
+    def test_getitem_retrieves_items(self, static_array):
         # arrange
         new_item = 5
 
@@ -74,7 +55,26 @@ class TestStaticArray:
         # assert
         assert static_array[0] == new_item
 
-    def test_can_delete_items_correctly(self, static_array):
+    def test_setitem_raises_exception_for_invalid_index(self, static_array):
+        # arrange
+        new_item = 5
+
+        # act & assert
+        with pytest.raises(IndexError):
+            static_array[6] = new_item
+
+    @pytest.mark.parametrize("index", [(0), (1), (2), (3), (4)])
+    def test_setitem_stores_items(self, index, static_array):
+        # arrange
+        new_item = 5
+
+        # act
+        static_array[index] = new_item
+
+        # assert
+        assert static_array[index] == new_item
+
+    def test_delitem_removes_items(self, static_array):
         # arrange
         static_array[0] = 5
 
@@ -84,7 +84,7 @@ class TestStaticArray:
         # assert
         assert static_array[0] is None
 
-    def test_can_represent_items_correctly(self, static_array):
+    def test_repr_represent_items(self, static_array):
         # arrange
         static_array[0] = 5
         static_array[1] = 6
@@ -95,7 +95,12 @@ class TestStaticArray:
         assert isinstance(items, str)
         assert "StaticArray([5, 6, None, None, None])" == str(static_array)
 
-    def test_can_return_correct_length(self, static_array):
+    def test_iter_iterates_over_items(self, static_array):
+        # act and assert
+        for item in static_array:
+            assert item is None
+
+    def test_len_returns_length(self, static_array):
         # arrange
         new_item = 5
 
@@ -105,12 +110,7 @@ class TestStaticArray:
         # assert
         assert len(static_array) == 1
 
-    def test_can_iterate_on_items_correctly(self, static_array):
-        # act and assert
-        for item in static_array:
-            assert item is None
-
-    def test_can_get_index_of_items_correctly(self, static_array):
+    def test_getindex_returns_index(self, static_array):
         # arrange
         static_array[0] = 5
 
@@ -120,7 +120,7 @@ class TestStaticArray:
         # assert
         assert index == 0
 
-    def test_can_reverse_items_correctly(self, static_array):
+    def test_reverse_reverses_items(self, static_array):
         # arrange
         static_array[0] = 5
         static_array[1] = 6
@@ -138,9 +138,9 @@ class TestStaticArray:
         assert static_array[4] is None
 
     @pytest.mark.xfail(reason="This functionality has not implemented")
-    def test_can_sort_items_correctly(self, static_array):
+    def test_sort_sorts_items_correctly(self, static_array):
         raise NotImplemented("This functionality has not implemented")
 
     @pytest.mark.xfail(reason="This functionality has not implemented")
-    def test_can_perform_binary_search_correctly(self, static_array):
+    def test_binary_search_performs_binary_search_correctly(self, static_array):
         raise NotImplemented("This functionality has not implemented")
