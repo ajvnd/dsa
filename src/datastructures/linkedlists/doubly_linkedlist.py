@@ -1,4 +1,4 @@
-from common.linkedlist import LinkedList
+from src.datastructures.linkedlists.common.linkedlist import LinkedList
 
 
 class DoublyLinkedListNode:

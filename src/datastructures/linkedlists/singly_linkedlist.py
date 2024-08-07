@@ -1,5 +1,5 @@
-from common.empty_linkedlist_exception import EmptyLinkedListException
-from common.linkedlist import LinkedList
+from src.datastructures.linkedlists.common.empty_linkedlist_exception import EmptyLinkedListException
+from src.datastructures.linkedlists.common.linkedlist import LinkedList
 
 
 class SinglyLinkedListNode:

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .empty_linkedlist_exception import EmptyLinkedListException
+from src.datastructures.linkedlists.common.empty_linkedlist_exception import EmptyLinkedListException
 
 
 class LinkedList(ABC):
