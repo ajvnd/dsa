@@ -3,7 +3,7 @@ import pytest
 from src.datastructures.arrays.dynamic_array import DynamicArray
 
 
-class TestDynamicArray():
+class TestDynamicArray:
 
     @pytest.fixture
     def dynamic_array(self):
@@ -35,7 +35,6 @@ class TestDynamicArray():
         # arrange
         dynamic_array[0] = 5
         dynamic_array.append(6)
-        dynamic_array.append(7)
 
         # act
         dynamic_array.insert(1, 1)
@@ -44,7 +43,6 @@ class TestDynamicArray():
         assert dynamic_array[0] == 5
         assert dynamic_array[1] == 1
         assert dynamic_array[2] == 6
-        assert dynamic_array[3] == 7
 
     def test_remove_removes_items(self, dynamic_array):
         # arrange

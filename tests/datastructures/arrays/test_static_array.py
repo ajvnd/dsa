@@ -9,7 +9,7 @@ class TestStaticArray:
     def static_array(self):
         return StaticArray(int, 5)
 
-    def test_init_can_initialize_fields(self, static_array):
+    def test_init_initialize_fields(self, static_array):
         # arrange
 
         # act
