@@ -1,11 +1,15 @@
+# TODO: We went wrong that I am not allowed to use type correctly
+from __future__ import annotations
+from dataclasses import dataclass
+
 from src.datastructures.linkedlists.common.empty_linkedlist_exception import EmptyLinkedListException
 from src.datastructures.linkedlists.common.linkedlist import LinkedList
 
 
+@dataclass
 class SinglyLinkedListNode:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+    data: any
+    next: SinglyLinkedListNode | None = None
 
 
 class SinglyLinkedList(LinkedList):
@@ -13,12 +17,14 @@ class SinglyLinkedList(LinkedList):
         super().__init__()
 
     def add_first(self, value):
-        new_node = SinglyLinkedListNode(value)
+        new_node = SinglyLinkedListNode(data=value)
         if self.is_empty():
             self._initialize_linkedlist(new_node)
         else:
             node = new_node
+            # new node point to head as new head
             node.next = self.head
+            # new node become new head
             self.head = node
 
     def add_last(self, value):
