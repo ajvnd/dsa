@@ -1,11 +1,15 @@
+# TODO: We went wrong that I am not allowed to use type correctly
+from __future__ import annotations
+from dataclasses import dataclass
+
 from src.datastructures.linkedlists.common.linkedlist import LinkedList
 
 
+@dataclass
 class DoublyLinkedListNode:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-        self.prev = None
+    data: any
+    next: DoublyLinkedListNode | None = None
+    prev: DoublyLinkedListNode | None = None
 
 
 class DoublyLinkedList(LinkedList):
@@ -13,7 +17,17 @@ class DoublyLinkedList(LinkedList):
         super().__init__()
 
     def add_first(self, value):
-        pass
+        new_node = DoublyLinkedListNode(data=value)
+        if self.is_empty():
+            self._initialize_linkedlist(new_node)
+        else:
+            node = new_node
+            # new node point to head as new head
+            node.next = self.head
+            # old head point back to new node
+            self.head.prev = node
+            # new node become new head
+            self.head = node
 
     def add_last(self, value):
         pass
