@@ -72,12 +72,4 @@ class StaticArray():
 
 
 if __name__ == '__main__':
-
-    array = StaticArray(str, 5)
-
-    array[0] = "A"
-    array[1] = "B"
-    array[2] = "C"
-
-    array.reverse()
-    print(array)
+    pass
