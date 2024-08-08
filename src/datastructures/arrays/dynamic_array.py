@@ -22,7 +22,7 @@ class DynamicArray(StaticArray):
 
         # shifting items to the right from last item to current item in index
         for i in range(self.__len__(), index, -1):
-            self._container[i + 1] = self._container[i]
+            self._container[i] = self._container[i - 1]
 
         # set new value after shifting items
         super().__setitem__(index, item)
@@ -55,8 +55,4 @@ class DynamicArray(StaticArray):
 
 
 if __name__ == '__main__':
-    da = DynamicArray(int)
-    da.append(3)
-    da.append(4)
-    da.append(4)
-    print(da)
+    pass
