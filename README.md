@@ -9,4 +9,4 @@ Algorithms and data structures are fundamental to efficient code and good softwa
 - LinkedList
   - [Singly Linked List](src/datastructures/linkedlists/singly_linkedlist.py)
   - [Doubly Linked List](src/datastructures/linkedlists/doubly_linkedlist.py)
-- Stack
+- [Stack](src/datastructures/stacks/stack.py)
