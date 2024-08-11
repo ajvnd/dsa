@@ -21,21 +21,21 @@ class TestStaticArray:
 
     def test_init_raises_exception_for_negative_capacity(self, static_array):
         # arrange
-        type = None
+        data_type = None
         capacity = -1
 
         # act and assert
         with pytest.raises(ValueError):
-            StaticArray(type, capacity)
+            StaticArray(data_type, capacity)
 
     def test_init_raises_exception_for_non_primitive_type(self, static_array):
         # arrange
-        type = None
+        data_type = None
         capacity = 5
 
         # act and assert
         with pytest.raises(TypeError):
-            StaticArray(type, capacity)
+            StaticArray(data_type, capacity)
 
     def test_init_raises_exception_for_inconsistent_type(self, static_array):
         # arrange
@@ -110,7 +110,7 @@ class TestStaticArray:
         # assert
         assert len(static_array) == 1
 
-    def test_getindex_returns_index(self, static_array):
+    def test_get_index_returns_index(self, static_array):
         # arrange
         static_array[0] = 5
 
