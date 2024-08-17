@@ -1,6 +1,5 @@
 class StaticArray():
-    def __init__(self, item_type, capacity):
-
+    def __init__(self, item_type, capacity: int):
         # make sure the capacity is greater or equal to zero
         if capacity <= 0:
             raise ValueError("Capacity must be a positive integer")
@@ -14,11 +13,11 @@ class StaticArray():
 
         self.__item_type = item_type
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int):
         self.__check_index(index)
         return self._container[index]
 
-    def __setitem__(self, index, value):
+    def __setitem__(self, index: int, value):
         self.__check_index(index)
 
         # Check if the provided value matches the expected type for elements in the array.
@@ -27,7 +26,7 @@ class StaticArray():
 
         self._container[index] = value
 
-    def __delitem__(self, index):
+    def __delitem__(self, index: int):
         self.__check_index(index)
         self._container[index] = None
 
@@ -61,15 +60,10 @@ class StaticArray():
     def binary_search(self):
         pass  # TODO: Once I implement this feature in the future, I pass it to this function
 
-    def __check_index(self, index):
-        is_integer = isinstance(index, int)
+    def __check_index(self, index: int):
         is_less_then_zero = index < 0
         is_grater_equal_to_capacity = index >= self._capacity
 
         # Check if the index is integer  value matches the expected type for elements in the array.
-        if not is_integer or is_less_then_zero or is_grater_equal_to_capacity:
+        if not is_less_then_zero or is_grater_equal_to_capacity:
             raise IndexError("Index out of range")
-
-
-if __name__ == '__main__':
-    pass

@@ -15,7 +15,7 @@ class DynamicArray(StaticArray):
 
         super().__setitem__(super().__len__(), item)
 
-    def insert(self, index, item):
+    def insert(self, index: int, item):
         # if the number of items reached capacity, then double the size of array
         if self.__is_reached_the_capacity():
             self.__double_capacity()
@@ -53,6 +53,3 @@ class DynamicArray(StaticArray):
 
             self._container[i] = self._container[i + 1]
 
-
-if __name__ == '__main__':
-    pass
