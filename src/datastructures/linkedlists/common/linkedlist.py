@@ -62,6 +62,13 @@ class LinkedList(ABC):
         self.head = node
         self.tail = self.head
 
+    def _check_index(self, index):
+        is_less_then_zero = index < 0
+        is_grater_than_len = index > self.__len__()
+
+        if is_less_then_zero or is_grater_than_len:
+            raise IndexError("Index out of range")
+
     def __repr__(self):
         if self.is_empty():
             return "Empty LinkedList"
