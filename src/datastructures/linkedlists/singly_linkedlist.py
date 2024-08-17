@@ -35,8 +35,10 @@ class SinglyLinkedList(LinkedList):
             self.tail.next = new_node
             self.tail = self.tail.next
 
-    def add_at(self, index, value):
+    def add_at(self, index: int, value):
         new_node = SinglyLinkedListNode(value)
+
+        self._check_index(index)
 
         if self.is_empty():
             self._initialize_linkedlist(new_node)
@@ -75,7 +77,8 @@ class SinglyLinkedList(LinkedList):
             next_to_item = self._getitem(index + 1)
             previous_to_item.next = next_to_item
 
-    def __is_first_item(self, index):
+    @staticmethod
+    def __is_first_item(index):
         return index == 0
 
     def __is_last_item(self, index):
