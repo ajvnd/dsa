@@ -27,7 +27,7 @@ class TestSinglyLinedList:
 
         # assert
         assert singly_linkedlist.head.data == 4
-        assert singly_linkedlist.tail.data == 4
+        assert singly_linkedlist.head == singly_linkedlist.tail
 
     def test_add_first_inserts_at_head_and_shifts_existing_nodes(self, singly_linkedlist: SinglyLinkedList):
         # arrange
@@ -47,8 +47,8 @@ class TestSinglyLinedList:
         singly_linkedlist.add_last(4)
 
         # assert
-        assert singly_linkedlist.tail.data == 4
         assert singly_linkedlist.head.data == 4
+        assert singly_linkedlist.head == singly_linkedlist.tail
 
     def test_add_last_inserts_last_and_shift_existing_nodes(self, singly_linkedlist: SinglyLinkedList):
         # arrange
@@ -78,7 +78,7 @@ class TestSinglyLinedList:
 
         # assert
         assert singly_linkedlist.head.data == 4
-        assert singly_linkedlist.tail.data == 4
+        assert singly_linkedlist.tail == singly_linkedlist.head
 
     @pytest.mark.parametrize('index', [(0), (1), (2), (3)])
     def test_add_at_inserts_at_specific_index(self, index, singly_linkedlist: SinglyLinkedList):
@@ -113,6 +113,7 @@ class TestSinglyLinedList:
 
         # assert
         assert singly_linkedlist.head.data == 4
+        assert singly_linkedlist.head == singly_linkedlist.tail
 
     def test_remove_last_raises_exception_when_linkedlist_is_empty(self, singly_linkedlist: SinglyLinkedList):
         # arrange
@@ -134,3 +135,16 @@ class TestSinglyLinedList:
 
         assert singly_linkedlist.head is None
         assert singly_linkedlist.tail is None
+
+    def test_remove_last_deletes_last_and_set_tail_previous_to_last(self, singly_linkedlist: SinglyLinkedList):
+        # arrange
+        singly_linkedlist.add_last(4)
+        singly_linkedlist.add_last(5)
+
+        # act
+        singly_linkedlist.remove_last()
+
+        # assert
+
+        assert singly_linkedlist.head.data == 4
+        assert singly_linkedlist.head == singly_linkedlist.tail
