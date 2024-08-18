@@ -1,27 +1,34 @@
 from src.datastructures.linkedlists.singly_linkedlist import SinglyLinkedList
+from src.datastructures.stacks.empty_stack_exception import EmptyStackException
 
 
 class Stack:
 
     def __init__(self):
-        self.item = SinglyLinkedList()
+        self.list = SinglyLinkedList()
 
     def is_empty(self):
-        return self.item.is_empty()
+        return self.list.is_empty()
 
     def push(self, item):
-        self.item.add_first(item)
+        self.list.add_first(item)
         pass
 
     def pop(self):
-        item = self.item.peak_first()
-        self.item.remove_first()
+        if self.is_empty():
+            raise EmptyStackException()
+
+        item = self.list.peak_first()
+        self.list.remove_first()
         return item.value
 
     def peek(self):
-        item = self.item.peak_first()
+        if self.is_empty():
+            raise EmptyStackException()
+
+        item = self.list.peak_first()
         return item.value
 
     def size(self):
-        self.item.remove_first()
+        self.list.remove_first()
         pass
