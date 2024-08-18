@@ -65,6 +65,8 @@ class SinglyLinkedList(LinkedList):
             self.tail = previous_to_tail
 
     def remove_at(self, index):
+        self._check_index(index)
+
         if self.is_empty():
             raise EmptyLinkedListException()
 
