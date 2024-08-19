@@ -44,13 +44,22 @@ class SinglyLinkedList(LinkedList):
             self._initialize_linkedlist(new_node)
         elif self.__is_first_item(index):
             self.add_first(value)
-        elif self.__is_last_item(index):
-            self.add_last(value)
+            # new last node becomes new tail
+            self.tail = new_node
         else:
+            # find a node before new node
             previous_to_item = self._getitem(index - 1)
-            next_to_item = self._getitem(index + 1)
+            # points to new node
             previous_to_item.next = new_node
-            new_node.next = next_to_item
+
+            if not self.__is_last_item(index):
+                # find a node after new node
+                next_to_item = self._getitem(index + 1)
+                # new node points to the node after it
+                new_node.next = next_to_item
+            else:
+                # new last node becomes new tail, if it does not have anything after.
+                self.tail = new_node
 
     def remove_last(self):
         if self.is_empty():
