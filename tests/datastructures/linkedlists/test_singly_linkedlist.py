@@ -148,3 +148,67 @@ class TestSinglyLinedList:
 
         assert singly_linkedlist.head.data == 4
         assert singly_linkedlist.head == singly_linkedlist.tail
+
+    def test_remove_at_raises_exception_when_access_invalid_index(self, singly_linkedlist: SinglyLinkedList):
+        # arrange
+
+        # act
+
+        # assert
+        with pytest.raises(IndexError):
+            singly_linkedlist.remove_at(1)
+
+    @pytest.mark.parametrize('index', [(0), (1), (2), (3)])
+    def test_remove_at_inserts_at_specific_index(self, index, singly_linkedlist: SinglyLinkedList):
+        # arrange
+        singly_linkedlist.add_first(4)
+        singly_linkedlist.add_first(3)
+        singly_linkedlist.add_first(2)
+        singly_linkedlist.add_first(1)
+
+        # act
+        singly_linkedlist.remove_at(index)
+
+        # assert
+        assert singly_linkedlist._getitem(index).data == index + 2
+
+    def test_peak_first_raises_exception_when_linkedlist_is_empty(self, singly_linkedlist: SinglyLinkedList):
+        # arrange
+
+        # act
+
+        # assert
+        with pytest.raises(EmptyLinkedListException):
+            singly_linkedlist.peak_first()
+
+    def test_peak_first_returns_head(self, singly_linkedlist: SinglyLinkedList):
+        # arrange
+        singly_linkedlist.add_first(1)
+        singly_linkedlist.add_first(2)
+
+        # act
+        head = singly_linkedlist.peak_first()
+
+        # assert
+        assert head.data == 2
+
+    def test_peak_last_raises_exception_when_linkedlist_is_empty(self, singly_linkedlist: SinglyLinkedList):
+        # arrange
+
+        # act
+
+        # assert
+        with pytest.raises(EmptyLinkedListException):
+            singly_linkedlist.peak_first()
+
+
+    def test_peak_last_returns_head(self, singly_linkedlist: SinglyLinkedList):
+        # arrange
+        singly_linkedlist.add_first(1)
+        singly_linkedlist.add_first(2)
+
+        # act
+        tail = singly_linkedlist.peak_last()
+
+        # assert
+        assert tail.data == 1
