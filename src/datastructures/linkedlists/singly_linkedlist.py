@@ -36,23 +36,19 @@ class SinglyLinkedList(LinkedList):
             self.tail = self.tail.next
 
     def add_at(self, index: int, value):
-        new_node = SinglyLinkedListNode(value)
-
         self._check_index(index)
 
-        if self.is_empty():
-            self._initialize_linkedlist(new_node)
-        elif self.__is_first_item(index):
+        new_node = SinglyLinkedListNode(value)
+
+        if self._is_first_item(index):
             self.add_first(value)
-            # new last node becomes new tail
-            self.tail = new_node
         else:
             # find a node before new node
             previous_to_item = self._getitem(index - 1)
             # points to new node
             previous_to_item.next = new_node
 
-            if not self.__is_last_item(index):
+            if not self._is_last_item(index):
                 # find a node after new node
                 next_to_item = self._getitem(index + 1)
                 # new node points to the node after it
@@ -79,18 +75,12 @@ class SinglyLinkedList(LinkedList):
         if self.is_empty():
             raise EmptyLinkedListException()
 
-        if self.__is_first_item(index):
+        if self._is_first_item(index):
             self.remove_first()
-        elif self.__is_last_item(index):
+        elif self._is_last_item(index):
             self.remove_last()
         else:
             previous_to_item = self._getitem(index - 1)
             next_to_item = self._getitem(index + 1)
             previous_to_item.next = next_to_item
 
-    @staticmethod
-    def __is_first_item(index):
-        return index == 0
-
-    def __is_last_item(self, index):
-        return index == self.__len__() - 1
