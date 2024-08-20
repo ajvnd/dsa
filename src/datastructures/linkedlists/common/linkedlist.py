@@ -69,6 +69,13 @@ class LinkedList(ABC):
         if is_less_then_zero or is_grater_than_len:
             raise IndexError("Index out of range")
 
+    @staticmethod
+    def _is_first_item(index):
+        return index == 0
+
+    def _is_last_item(self, index):
+        return index == self.__len__() - 1
+
     def __repr__(self):
         if self.is_empty():
             return "Empty LinkedList"
