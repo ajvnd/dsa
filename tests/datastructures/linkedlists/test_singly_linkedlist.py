@@ -158,8 +158,18 @@ class TestSinglyLinedList:
         with pytest.raises(IndexError):
             singly_linkedlist.remove_at(1)
 
+
+    def test_remove_at_raises_exception_when_linklist_is_empty(self, singly_linkedlist: SinglyLinkedList):
+        # arrange
+
+        # act
+
+        # assert
+        with pytest.raises(EmptyLinkedListException):
+            singly_linkedlist.remove_at(0)
+
     @pytest.mark.parametrize('index', [(0), (1), (2), (3)])
-    def test_remove_at_inserts_at_specific_index(self, index, singly_linkedlist: SinglyLinkedList):
+    def test_remove_at_deletes_at_specific_index(self, index, singly_linkedlist: SinglyLinkedList):
         # arrange
         singly_linkedlist.add_first(4)
         singly_linkedlist.add_first(3)
@@ -199,7 +209,7 @@ class TestSinglyLinedList:
 
         # assert
         with pytest.raises(EmptyLinkedListException):
-            singly_linkedlist.peak_first()
+            singly_linkedlist.peak_last()
 
 
     def test_peak_last_returns_head(self, singly_linkedlist: SinglyLinkedList):
@@ -212,3 +222,11 @@ class TestSinglyLinedList:
 
         # assert
         assert tail.data == 1
+
+    def test_repr_returns_empty_list_when_linkedlist_is_empty(self, singly_linkedlist: SinglyLinkedList):
+        # arrange
+
+        # act
+
+        # assert
+        assert str(singly_linkedlist) == "Empty LinkedList"
