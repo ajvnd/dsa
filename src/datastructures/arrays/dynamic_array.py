@@ -48,6 +48,7 @@ class DynamicArray(StaticArray):
         for i in range(index, self._capacity):
             if i + 1 >= self._capacity:
                 break
-            # TODO: creates a bug by leaving repetitive item at the end.
             self._container[i] = self._container[i + 1]
 
+        # making the last repeated item none.
+        self._container[self._capacity - 1] = None
