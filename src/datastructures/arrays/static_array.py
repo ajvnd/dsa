@@ -44,6 +44,7 @@ class StaticArray():
             if item is not None and item == value:
                 return index
 
+    # TODO: What if the user puts none item intentionally in the middle of array ?
     def reverse(self):
         # filter out none items
         items = [i for i in self._container if i is not None]
@@ -65,5 +66,5 @@ class StaticArray():
         is_grater_equal_to_capacity = index >= self._capacity
 
         # Check if the index is integer  value matches the expected type for elements in the array.
-        if not is_less_then_zero or is_grater_equal_to_capacity:
+        if is_less_then_zero or is_grater_equal_to_capacity:
             raise IndexError("Index out of range")
