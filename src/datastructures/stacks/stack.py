@@ -12,7 +12,6 @@ class Stack:
 
     def push(self, item):
         self.list.add_first(item)
-        pass
 
     def pop(self):
         if self.is_empty():
@@ -31,4 +30,3 @@ class Stack:
 
     def size(self):
         self.list.remove_first()
-        pass
