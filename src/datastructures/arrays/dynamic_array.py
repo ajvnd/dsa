@@ -9,14 +9,12 @@ class DynamicArray(StaticArray):
         super().__init__(item_type, 1)
 
     def append(self, item):
-        # if the number of items reached capacity, then double the size of array
         if self.__is_reached_the_capacity():
             self.__double_capacity()
 
         super().__setitem__(super().__len__(), item)
 
     def insert(self, index: int, item):
-        # if the number of items reached capacity, then double the size of array
         if self.__is_reached_the_capacity():
             self.__double_capacity()
 
@@ -50,6 +48,6 @@ class DynamicArray(StaticArray):
         for i in range(index, self._capacity):
             if i + 1 >= self._capacity:
                 break
-
+            # TODO: creates a bug by leaving repetitive item at the end.
             self._container[i] = self._container[i + 1]
 
