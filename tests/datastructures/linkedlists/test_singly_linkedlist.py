@@ -171,16 +171,20 @@ class TestSinglyLinedList:
     @pytest.mark.parametrize('index', [(0), (1), (2), (3)])
     def test_remove_at_deletes_at_specific_index(self, index, singly_linkedlist: SinglyLinkedList):
         # arrange
-        singly_linkedlist.add_first(4)
         singly_linkedlist.add_first(3)
         singly_linkedlist.add_first(2)
         singly_linkedlist.add_first(1)
+        singly_linkedlist.add_first(0)
 
         # act
         singly_linkedlist.remove_at(index)
 
         # assert
-        assert singly_linkedlist._getitem(index).data == index + 2
+        if index + 1 <= len(singly_linkedlist):
+            assert singly_linkedlist._getitem(index).data == index + 1
+        else:
+            with pytest.raises(IndexError):
+                assert singly_linkedlist._getitem(index).data == None
 
     def test_peak_first_raises_exception_when_linkedlist_is_empty(self, singly_linkedlist: SinglyLinkedList):
         # arrange
