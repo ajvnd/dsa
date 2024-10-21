@@ -30,7 +30,15 @@ class DoublyLinkedList(LinkedList):
             self.head = node
 
     def add_last(self, value):
-        pass
+        new_node = DoublyLinkedListNode(value)
+        
+        if self.is_empty():
+            self._initialize_linkedlist(new_node)
+        else:
+            # link the current tail's next to the new node
+            self.tail.next = new_node
+            # update the tail reference to the new node
+            self.tail = self.tail.next
 
     def add_at(self, index, value):
         pass
