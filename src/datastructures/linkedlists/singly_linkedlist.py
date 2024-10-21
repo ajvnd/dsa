@@ -32,7 +32,9 @@ class SinglyLinkedList(LinkedList):
         if self.is_empty():
             self._initialize_linkedlist(new_node)
         else:
+            # link the current tail's next to the new node
             self.tail.next = new_node
+            # update the tail reference to the new node
             self.tail = self.tail.next
 
     def add_at(self, index: int, value):
@@ -45,7 +47,7 @@ class SinglyLinkedList(LinkedList):
         else:
             # find a node before new node
             previous_to_item = self._getitem(index - 1)
-            # points to new node
+            # point to new node
             previous_to_item.next = new_node
 
             if not self._is_last_item(index):
@@ -54,7 +56,7 @@ class SinglyLinkedList(LinkedList):
                 # new node points to the node after it
                 new_node.next = next_to_item
             else:
-                # new last node becomes new tail, if it does not have anything after.
+                # new last node becomes new tail
                 self.tail = new_node
 
     def remove_last(self):
